@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="./resultados.css">
+</head>
+<body>
+  <div class="cabecera">
+    <h1>Caso totales:<span th:text="${casosTotales}"></span></h1>
+
+  </div>
+<table>
+      <tr>
+        <th>Continente</th>
+        <th>Pais</th>
+        <th>Provincia</th>
+        <th>Actuales</th>
+        <th>Acumulados</th>
+        <th>Curados</th>
+        <th>Muertes</th>
+        <th>Hora</th>
+      </tr>
+      <tr th:each="resultado : ${json.results}">
+        <td th:text="${resultado.continentEnglishName}"></td>
+        <td th:text="${resultado.countryEnglishName}"></td>
+        <td th:text="${resultado.provinceName}"></td>
+        <td th:text="${resultado.currentConfirmedCount}"></td>
+        <td th:text="${resultado.confirmedCount}"></td>
+        <td th:text="${resultado.curedCount}"></td>
+        <td th:text="${resultado.deadCount}"></td>
+        <td th:text="${resultado.updateTime}"></td>
+      </tr>
+    </table>
+</body>
+</html>

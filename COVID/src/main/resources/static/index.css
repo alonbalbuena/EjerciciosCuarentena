@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  background-color: #efeeee;
+  height: 100vh;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  justify-items: center;
+}
+
+.formulario {
+  grid-area: 2 / 2 / 3 / 3;
+  border-radius: 50px;
+  background: #efeeee;
+  box-shadow: 20px 20px 25px #d2d1d1, -20px -20px 25px #ffffff;
+  /*asi no reduce su tamaño*/
+  max-height: 250px;
+  min-height: 250px;
+  max-width: 250px;
+  /*colocamos el formulario al centro*/
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  /*estilos*/
+  font-family: 'Tauri', sans-serif;
+}
+form{
+    flex-basis: 200px;
+
+    /*colocamos el usurio y contraseña*/
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+form>*{
+    flex-basis: 100px;
+    height: 20px;
+    font-size: 1.1em;
+    text-align: center;
+}
+form>input{
+    border-radius: 3px;
+    border: 1px solid #bbbbbb;
+}
+
+svg{
+    fill: #EE341B;
+    cursor: pointer;
+}
