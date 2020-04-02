@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="ISO-8859-1" />
+    <title>Lista proveedores</title>
+    <link rel="stylesheet" type="text/css" href="proveedores.css">
+  </head>
+  <body>
+  <div>
+    <table>
+      <tr>
+        <td>id</td>
+        <td>nombre</td>
+        <td>apellidos</td>
+        <td>nif</td>
+        <td>fecha</td>
+      </tr>
+      <tr th:each="proveedor : ${proveedores}">
+        <td th:text="${proveedor.idproveedor}"></td>
+        <td th:text="${proveedor.nombre}"></td>
+        <td th:text="${proveedor.apellidos}"></td>
+        <td th:text="${proveedor.nif}"></td>
+        <td th:text="${proveedor.fecha}"></td>
+      </tr>
+    </table>
+  </div>
+  </body>
+  <script src="proveedores.js"></script>
+</html>
