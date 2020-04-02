@@ -21,6 +21,7 @@
         <td th:text="${proveedor.apellidos}"></td>
         <td th:text="${proveedor.nif}"></td>
         <td th:text="${proveedor.fecha}"></td>
+        <td><a th:href="@{/eliminarProveedor(id=${proveedor.idproveedor})}">Eliminar</a></td>
       </tr>
     </table>
   </div>
