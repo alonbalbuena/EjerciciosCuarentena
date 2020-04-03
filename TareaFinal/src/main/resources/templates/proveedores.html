@@ -19,11 +19,11 @@
 				<td>fecha</td>
 			</tr>
 			<tr th:each="proveedor : ${proveedores}">
-				<td th:text="*{idproveedor}"></td>
-				<td th:text="*{nombre}"></td>
-				<td th:text="*{apellidos}"></td>
-				<td th:text="*{nif}"></td>
-				<td th:text="*{fecha}"></td>
+				<td th:text="${proveedor.idproveedor}"></td>
+				<td th:text="${proveedor.nombre}"></td>
+				<td th:text="${proveedor.apellidos}"></td>
+				<td th:text="${proveedor.nif}"></td>
+				<td th:text="${proveedor.fecha}"></td>
 				<td><a
 					th:href="@{/eliminarProveedor(id=${proveedor.idproveedor})}">Eliminar</a></td>
 			</tr>
@@ -38,7 +38,7 @@
 				th:field="*{nombre}" /> <label for="apellidos">apellidos:</label> <input
 				id="apellidos" type="text" th:field="*{apellidos}" /> <label
 				for="nif">nif:</label> <input id="nif" type="text" th:field="*{nif}" />
-			<label for="fecha">fecha:</label> <input id="fecha" type="datetime-local"
+			<label for="fecha">fecha:</label> <input id="fecha" type="date"
 				th:field="*{fecha}" /> <input type="submit" value="Crear" />
 		</form>
 	</div>

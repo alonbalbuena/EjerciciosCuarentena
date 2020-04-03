@@ -6,6 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 
 @Entity
 @Table(name = "proveedores")
@@ -16,6 +19,7 @@ public class ProveedorBO {
 	private String nombre;
 	private String apellidos;
 	private String nif;
+	@DateTimeFormat(iso = ISO.DATE)//evitamos problemas en formularios al meter fechas
 	private LocalDate fecha;
 	public ProveedorBO(int idproveedor, String nombre, String apellidos, String nif, LocalDate fecha) {
 		super();
