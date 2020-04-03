@@ -1,30 +1,47 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="ISO-8859-1" />
-    <title>Lista proveedores</title>
-    <link rel="stylesheet" type="text/css" href="proveedores.css">
-  </head>
-  <body>
-  <div>
-    <table>
-      <tr>
-        <td>id</td>
-        <td>nombre</td>
-        <td>apellidos</td>
-        <td>nif</td>
-        <td>fecha</td>
-      </tr>
-      <tr th:each="proveedor : ${proveedores}">
-        <td th:text="${proveedor.idproveedor}"></td>
-        <td th:text="${proveedor.nombre}"></td>
-        <td th:text="${proveedor.apellidos}"></td>
-        <td th:text="${proveedor.nif}"></td>
-        <td th:text="${proveedor.fecha}"></td>
-        <td><a th:href="@{/eliminarProveedor(id=${proveedor.idproveedor})}">Eliminar</a></td>
-      </tr>
-    </table>
-  </div>
-  </body>
-  <script src="proveedores.js"></script>
+<head>
+<meta charset="ISO-8859-1" />
+<title>Lista proveedores</title>
+<link rel="stylesheet" type="text/css" href="proveedores.css">
+</head>
+<body>
+	<header>
+		<h1>Proveedores</h1>
+	</header>
+	<div class="proveedores">
+		<table>
+			<tr>
+				<td>id</td>
+				<td>nombre</td>
+				<td>apellidos</td>
+				<td>nif</td>
+				<td>fecha</td>
+			</tr>
+			<tr th:each="proveedor : ${proveedores}">
+				<td th:text="*{idproveedor}"></td>
+				<td th:text="*{nombre}"></td>
+				<td th:text="*{apellidos}"></td>
+				<td th:text="*{nif}"></td>
+				<td th:text="*{fecha}"></td>
+				<td><a
+					th:href="@{/eliminarProveedor(id=${proveedor.idproveedor})}">Eliminar</a></td>
+			</tr>
+		</table>
+	</div>
+	<!-- Identificamos el tipo del objeto que saldra de este formulario(el nombre del objeto es 
+		el del metodo del controlador) -->
+	<div class="formulario">
+		<form th:object="${nuevoproveedor}" th:action="@{/crearProveedor}"
+			method="POST">
+			<label for="nombre">nombre:</label><input id="nombre" type="text"
+				th:field="*{nombre}" /> <label for="apellidos">apellidos:</label> <input
+				id="apellidos" type="text" th:field="*{apellidos}" /> <label
+				for="nif">nif:</label> <input id="nif" type="text" th:field="*{nif}" />
+			<label for="fecha">fecha:</label> <input id="fecha" type="datetime-local"
+				th:field="*{fecha}" /> <input type="submit" value="Crear" />
+		</form>
+	</div>
+</body>
+<script src="proveedores.js"></script>
 </html>

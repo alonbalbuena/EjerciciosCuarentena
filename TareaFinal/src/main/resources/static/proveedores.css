@@ -10,7 +10,18 @@ body {
 	justify-items: center;
 }
 
-div {
+header{
+	grid-row: 1/2;
+	grid-column:1/4;
+}
+
+header> h1{
+	border-radius: 50px;
+	background: #efeeee;
+	box-shadow: 20px 20px 25px #d2d1d1, -20px -20px 25px #ffffff;
+}
+
+.proveedores {
 	grid-area: 2/2/3/3;
 	/*neumorfismo*/
 	border-radius: 50px;
@@ -30,8 +41,46 @@ td{
 	border-right:1px solid black;
 }
 
-tr:hover {
+tr:hover::not(tr:nth-child(1)) {
 	border-radius: 50px;
 	background: #F0F5FB;
 	box-shadow: inset 20px 20px 60px #ccd0d5, inset -20px -20px 60px #ffffff;
+}
+
+.formulario {
+	grid-area: 3/2/4/3;
+	border-radius: 50px;
+	background: #efeeee;
+	box-shadow: 20px 20px 25px #d2d1d1, -20px -20px 25px #ffffff;
+	/*asi no reduce su tamaño*/
+	max-height: 250px;
+	min-height: 250px;
+	max-width: 250px;
+	/*colocamos el formulario al centro*/
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	/*estilos*/
+	font-family: 'Tauri', sans-serif;
+}
+
+form {
+	flex-basis: 200px;
+	/*colocamos el usurio y contraseña*/
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+form>* {
+	flex-basis: 100px;
+	height: 20px;
+	font-size: 1.1em;
+	text-align: center;
+}
+
+form>input {
+	border-radius: 3px;
+	border: 1px solid #bbbbbb;
 }
