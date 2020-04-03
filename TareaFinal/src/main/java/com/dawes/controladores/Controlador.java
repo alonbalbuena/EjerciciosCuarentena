@@ -38,8 +38,9 @@ public class Controlador {
 		// le pasamos todos los proveedores
 		modelo.addAttribute("proveedores", proveedores);
 		//ademas de pasar un proveedor vacio que posteriormente rellenaremos con el formulario de creado.
-		modelo.addAttribute("nuevoproveedor",new ProveedorBO());
-
+		modelo.addAttribute("nuevoproveedor",new ProveedorBO());//para crear
+		modelo.addAttribute("proveedoractualizar",new ProveedorBO());//para actualizar
+		
 		return "proveedores";
 	}
 

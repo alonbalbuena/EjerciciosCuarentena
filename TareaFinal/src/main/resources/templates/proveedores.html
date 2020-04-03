@@ -3,6 +3,8 @@
 <head>
 <meta charset="ISO-8859-1" />
 <title>Lista proveedores</title>
+<!-- FUENTES Y ESTILOS -->
+<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="proveedores.css">
 </head>
 <body>
@@ -17,6 +19,7 @@
 				<td>apellidos</td>
 				<td>nif</td>
 				<td>fecha</td>
+				<td>eliminar<td>
 			</tr>
 			<tr th:each="proveedor : ${proveedores}">
 				<td th:text="${proveedor.idproveedor}"></td>
@@ -31,7 +34,8 @@
 	</div>
 	<!-- Identificamos el tipo del objeto que saldra de este formulario(el nombre del objeto es 
 		el del metodo del controlador) -->
-	<div class="formulario">
+	<div class="formulario-crear">
+	<h1>nuevo proveedor</h1>
 		<form th:object="${nuevoproveedor}" th:action="@{/crearProveedor}"
 			method="POST">
 			<label for="nombre">nombre:</label><input id="nombre" type="text"
@@ -40,6 +44,18 @@
 				for="nif">nif:</label> <input id="nif" type="text" th:field="*{nif}" />
 			<label for="fecha">fecha:</label> <input id="fecha" type="date"
 				th:field="*{fecha}" /> <input type="submit" value="Crear" />
+		</form>
+	</div>
+	<div class="formulario-actualizar">
+	<h1>actualizar proveedor</h1>
+		<form th:object="${proveedoractualizar}" th:action="@{/actualizarProveedor}"
+			method="PUT">
+			<label for="id">id proveedor a actualizar:</label><input id="id" type="text"
+				th:field="*{id}" />
+			<label for="nombre">nombre:</label><input id="nombre" type="text"
+				th:field="*{nombre}" /> <label for="apellidos">apellidos:</label> <input
+				id="apellidos" type="text" th:field="*{apellidos}" /> 
+				<input type="submit" value="Actualizar" />
 		</form>
 	</div>
 </body>
