@@ -16,14 +16,13 @@
       <h1>Proveedores</h1>
     </header>
     <div class="proveedores">
-      <table>
+      <table class="proveedores__tabla">
         <tr>
           <td>id</td>
           <td>nombre</td>
           <td>apellidos</td>
           <td>nif</td>
           <td>fecha</td>
-          <td>eliminar</td>
           <td></td>
         </tr>
         <tr th:each="proveedor : ${proveedores}">
@@ -42,8 +41,8 @@
     </div>
     <!-- Identificamos el tipo del objeto que saldra de este formulario(el nombre del objeto es 
 		el del metodo del controlador) -->
-    <div class="formulario-crear">
-      <h1>nuevo proveedor</h1>
+    <div class="formulario formulario--crear">
+      <h1 class="formulario__titulo">nuevo proveedor</h1>
       <form
         th:object="${nuevoproveedor}"
         th:action="@{/crearProveedor}"
@@ -57,23 +56,23 @@
         <input id="nif" type="text" th:field="*{nif}" />
         <label for="fecha">fecha:</label>
         <input id="fecha" type="date" th:field="*{fecha}" />
-        <input type="submit" value="Crear" />
+        <input class="formulario__boton" type="submit" value="" />
       </form>
     </div>
-    <div class="formulario-actualizar">
-      <h1>actualizar proveedor</h1>
+    <div class="formulario formulario--actualizar">
+      <h1 class="formulario__titulo">actualizar proveedor</h1>
       <form
         th:object="${proveedoractualizado}"
         th:action="@{/actualizarProveedor}"
         method="PUT"
       >
-        <label for="id">id proveedor a actualizar:</label
+        <label for="id">id:</label
         ><input id="id" type="text" th:field="*{idproveedor}" />
         <label for="nombre-actualizado">nombre:</label
         ><input id="nombre-actualizado" type="text" th:field="*{nombre}" />
         <label for="apellidos-actualizado">apellidos:</label>
         <input id="apellidos-actualizado" type="text" th:field="*{apellidos}" />
-        <input type="submit" value="Actualizar" />
+        <input class="formulario__boton" type="submit" value="" />
       </form>
     </div>
   </body>
