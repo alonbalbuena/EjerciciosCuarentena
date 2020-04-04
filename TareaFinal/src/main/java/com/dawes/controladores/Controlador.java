@@ -47,60 +47,34 @@ public class Controlador {
 
   @RequestMapping("/eliminarProveedor")
   public String eliminar(Model modelo, @RequestParam("id") Integer id) {
-
     // tenemos que sustituir las variables de la url
     Map<String, Integer> variablesUrl = new HashMap<String, Integer>();
     variablesUrl.put("id", id);
     plantillaPeticiones.delete("http://localhost:8080/proveedor/{id}", variablesUrl);
-    // le pasamos todos los proveedores otra vez
-    ProveedorBO[] proveedores = plantillaPeticiones.getForObject("http://localhost:8080/proveedores",
-        ProveedorBO[].class);
-    modelo.addAttribute("proveedores", proveedores);
-    // ademas de pasar un proveedor vacio que posteriormente rellenaremos con el
-    // formulario de creado.
-    modelo.addAttribute("nuevoproveedor", new ProveedorBO());
-    modelo.addAttribute("proveedoractualizado", new ProveedorBO());
-
-    return "proveedores";
+    //repetimos las peticiones al entrar en la pagina para ahorrar codigo
+    return inicio(modelo);
   }
 
   @RequestMapping(value = "/crearProveedor", method = RequestMethod.POST)
   // request atribute determinadmos el tipo del objeto que hace la peticion al
   // servidor(nombbre igual que el form)
   public String crear(@ModelAttribute("nuevoproveedor") ProveedorBO proveedorNuevo, Model modelo) {
-
     // determinamos el servicio al que hacemos post, el objeto que pasamos y el tipo
     // de la respuesta que esperamos
     plantillaPeticiones.postForObject("http://localhost:8080/proveedor", proveedorNuevo,
         String.class);
-    // le pasamos todos los proveedores otra vez
-    ProveedorBO[] proveedores = plantillaPeticiones.getForObject("http://localhost:8080/proveedores",
-        ProveedorBO[].class);
-    modelo.addAttribute("proveedores", proveedores);
-    // ademas de pasar un proveedor vacio que posteriormente rellenaremos con el
-    // formulario de creado.
-    modelo.addAttribute("nuevoproveedor", new ProveedorBO());
-    modelo.addAttribute("proveedoractualizado", new ProveedorBO());
-
-    return "proveedores";
+    //repetimos las peticiones al entrar en la pagina para ahorrar codigo
+    return inicio(modelo);
   }
 
   @RequestMapping(value ="/actualizarProveedor")
   public String actualizar(@ModelAttribute("proveedoractualizado") ProveedorBO proveedor, Model modelo){
-
     //en la url tenemos que poner el id de este proveedor
     Map<String,Integer> parametros = new HashMap<String,Integer>();
     parametros.put("id", proveedor.getIdproveedor());
     //peticion de actualizacion (actualizamos el proveedor)
     plantillaPeticiones.put("http://localhost:8080/proveedor/{id}", proveedor,parametros);
-
-    //datos enviados al inicio
-    ProveedorBO[] proveedores = plantillaPeticiones.getForObject("http://localhost:8080/proveedores",
-        ProveedorBO[].class);
-    modelo.addAttribute("proveedores", proveedores);
-    modelo.addAttribute("nuevoproveedor", new ProveedorBO());
-    modelo.addAttribute("proveedoractualizado", new ProveedorBO());
-
-    return "proveedores";
+    //repetimos las peticiones al entrar en la pagina para ahorrar codigo
+    return inicio(modelo);
   }
 }
