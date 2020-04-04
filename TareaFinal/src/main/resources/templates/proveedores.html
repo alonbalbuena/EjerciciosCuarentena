@@ -1,63 +1,81 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="ISO-8859-1" />
-<title>Lista proveedores</title>
-<!-- FUENTES Y ESTILOS -->
-<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300&display=swap" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="proveedores.css">
-</head>
-<body>
-	<header>
-		<h1>Proveedores</h1>
-	</header>
-	<div class="proveedores">
-		<table>
-			<tr>
-				<td>id</td>
-				<td>nombre</td>
-				<td>apellidos</td>
-				<td>nif</td>
-				<td>fecha</td>
-				<td>eliminar<td>
-			</tr>
-			<tr th:each="proveedor : ${proveedores}">
-				<td th:text="${proveedor.idproveedor}"></td>
-				<td th:text="${proveedor.nombre}"></td>
-				<td th:text="${proveedor.apellidos}"></td>
-				<td th:text="${proveedor.nif}"></td>
-				<td th:text="${proveedor.fecha}"></td>
-				<td><a
-					th:href="@{/eliminarProveedor(id=${proveedor.idproveedor})}">Eliminar</a></td>
-			</tr>
-		</table>
-	</div>
-	<!-- Identificamos el tipo del objeto que saldra de este formulario(el nombre del objeto es 
+  <head>
+    <meta charset="ISO-8859-1" />
+    <title>Lista proveedores</title>
+    <!-- FUENTES Y ESTILOS -->
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="proveedores.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Proveedores</h1>
+    </header>
+    <div class="proveedores">
+      <table>
+        <tr>
+          <td>id</td>
+          <td>nombre</td>
+          <td>apellidos</td>
+          <td>nif</td>
+          <td>fecha</td>
+          <td>eliminar</td>
+          <td></td>
+        </tr>
+        <tr th:each="proveedor : ${proveedores}">
+          <td th:text="${proveedor.idproveedor}"></td>
+          <td th:text="${proveedor.nombre}"></td>
+          <td th:text="${proveedor.apellidos}"></td>
+          <td th:text="${proveedor.nif}"></td>
+          <td th:text="${proveedor.fecha}"></td>
+          <td>
+            <a th:href="@{/eliminarProveedor(id=${proveedor.idproveedor})}"
+              >Eliminar</a
+            >
+          </td>
+        </tr>
+      </table>
+    </div>
+    <!-- Identificamos el tipo del objeto que saldra de este formulario(el nombre del objeto es 
 		el del metodo del controlador) -->
-	<div class="formulario-crear">
-	<h1>nuevo proveedor</h1>
-		<form th:object="${nuevoproveedor}" th:action="@{/crearProveedor}"
-			method="POST">
-			<label for="nombre">nombre:</label><input id="nombre" type="text"
-				th:field="*{nombre}" /> <label for="apellidos">apellidos:</label> <input
-				id="apellidos" type="text" th:field="*{apellidos}" /> <label
-				for="nif">nif:</label> <input id="nif" type="text" th:field="*{nif}" />
-			<label for="fecha">fecha:</label> <input id="fecha" type="date"
-				th:field="*{fecha}" /> <input type="submit" value="Crear" />
-		</form>
-	</div>
-	<div class="formulario-actualizar">
-	<h1>actualizar proveedor</h1>
-		<form th:object="${proveedoractualizar}" th:action="@{/actualizarProveedor}"
-			method="PUT">
-			<label for="id">id proveedor a actualizar:</label><input id="id" type="text"
-				th:field="*{id}" />
-			<label for="nombre">nombre:</label><input id="nombre" type="text"
-				th:field="*{nombre}" /> <label for="apellidos">apellidos:</label> <input
-				id="apellidos" type="text" th:field="*{apellidos}" /> 
-				<input type="submit" value="Actualizar" />
-		</form>
-	</div>
-</body>
-<script src="proveedores.js"></script>
+    <div class="formulario-crear">
+      <h1>nuevo proveedor</h1>
+      <form
+        th:object="${nuevoproveedor}"
+        th:action="@{/crearProveedor}"
+        method="POST"
+      >
+        <label for="nombre">nombre:</label
+        ><input id="nombre" type="text" th:field="*{nombre}" />
+        <label for="apellidos">apellidos:</label>
+        <input id="apellidos" type="text" th:field="*{apellidos}" />
+        <label for="nif">nif:</label>
+        <input id="nif" type="text" th:field="*{nif}" />
+        <label for="fecha">fecha:</label>
+        <input id="fecha" type="date" th:field="*{fecha}" />
+        <input type="submit" value="Crear" />
+      </form>
+    </div>
+    <div class="formulario-actualizar">
+      <h1>actualizar proveedor</h1>
+      <form
+        th:object="${proveedoractualizado}"
+        th:action="@{/actualizarProveedor}"
+        method="PUT"
+      >
+        <label for="id">id proveedor a actualizar:</label
+        ><input id="id" type="text" th:field="*{idproveedor}" />
+        <label for="nombre-actualizado">nombre:</label
+        ><input id="nombre-actualizado" type="text" th:field="*{nombre}" />
+        <label for="apellidos-actualizado">apellidos:</label>
+        <input id="apellidos-actualizado" type="text" th:field="*{apellidos}" />
+        <input type="submit" value="Actualizar" />
+      </form>
+    </div>
+  </body>
+  <script src="proveedores.js"></script>
 </html>

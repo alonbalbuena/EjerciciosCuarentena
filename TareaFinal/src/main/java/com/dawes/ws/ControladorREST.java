@@ -19,8 +19,9 @@ public class ControladorREST {
 	@Autowired
 	ProveedorServicios servicios;
 
-	//para permitir que se comunicen los servidores del backend y los del frontend
-	//debemos permitir el CORS (permitimos solo desde el local en el puerto marcado)
+	// para permitir que se comunicen los servidores del backend y los del frontend
+	// debemos permitir el CORS (permitimos solo desde el local en el puerto
+	// marcado)
 	@CrossOrigin(origins = "localhost:5500")
 	// la respuesta del metodo es un conjunto de objetos (encapsulado en el
 	// responsebody)
