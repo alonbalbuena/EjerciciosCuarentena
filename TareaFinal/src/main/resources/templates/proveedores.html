@@ -42,7 +42,7 @@
     <!-- Identificamos el tipo del objeto que saldra de este formulario(el nombre del objeto es 
 		el del metodo del controlador) -->
     <div class="formulario formulario--crear">
-      <h1 class="formulario__titulo">nuevo proveedor</h1>
+      <h1 class="formulario__titulo">nuevo</h1>
       <form
         th:object="${nuevoproveedor}"
         th:action="@{/crearProveedor}"
@@ -60,7 +60,7 @@
       </form>
     </div>
     <div class="formulario formulario--actualizar">
-      <h1 class="formulario__titulo">actualizar proveedor</h1>
+      <h1 class="formulario__titulo">actualizar</h1>
       <form
         th:object="${proveedoractualizado}"
         th:action="@{/actualizarProveedor}"

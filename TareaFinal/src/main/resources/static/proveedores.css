@@ -9,7 +9,7 @@ body {
   grid-template-columns: 200px 1fr 1fr 200px;
   grid-template-rows: 100px 1fr 400px;
   /*espacio entre filas para evitar las sombras*/
-	row-gap: 60px;
+	row-gap: 70px;
 	column-gap: 30px;
 }
 
@@ -35,16 +35,17 @@ header > h1 {
 
 .formulario{
   /*creamos un tamaño cuadrado*/
-  height: 400px;
-  width: 400px;
+  height: 350px;
+  width: 350px;
   /*neumorfismo*/
   border-radius: 50px;
   background: #f0f5fb;
-  box-shadow: 40px 40px 80px #d2d1d1, -40px -40px 80px #ffffff;
+  box-shadow: 35px 35px 70px #d2d1d1, -35px -35px 70px #ffffff;
   /*colocamos el formulario al centro*/
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
+  justify-self: center;
   /*estilos*/
 	font-family: "Comic Neue", cursive;
 	color: #7A818B;
@@ -52,18 +53,19 @@ header > h1 {
 
 .formulario--crear{
   grid-row: 2/3;
-  grid-column: 1/3;
+  grid-column: 2/3;
 }
 
 .formulario--actualizar {
 	grid-row: 2/3;
-	grid-column: 3/5;
+	grid-column: 3/4;
 }
 
 .formulario__titulo {
   margin: 0;
 	text-align: center;
-	color: black;
+  color: black;
+  font-family: 'Bungee Shade', cursive;
 }
 
 .formulario__boton{
@@ -71,7 +73,7 @@ header > h1 {
   display: block;
   /*lo colocamos fuera del formulario*/
   position: relative;
-  bottom: -20px;
+  bottom: -10px;
 /*tamaños*/
   border:none;
   height: 40px;
@@ -81,21 +83,15 @@ header > h1 {
   background: #f0f5fb;
   box-shadow: 4px 4px 8px #d2d1d1, -4px -4px 8px #ffffff;
   color:crimson;
-}
-.formulario__boton::after{
-  content: "";
-  z-index: 100;
-  width: 10px;
-  height: 10px;
-  position: absolute;
-  top:10px;
-  right: 10px;
-  border-top: 15px solid black;
-  border-left: 15px solid black;
-  border-right: 15px solid black;
+  /*icono del boton*/
+  background-image: url("./next.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px;
 }
 .formulario__boton:hover{
   box-shadow:inset 4px 4px 8px #d2d1d1,inset -4px -4px 8px #ffffff;
+
 }
 
 form {
@@ -154,6 +150,33 @@ tr:nth-child(1) {
 	color:black;
 }
 
-tr:hover {
+/*al pasar por encima con el raton cambia la tabbla menos 
+la primera fila*/
+tr:not(:first-child):hover {
   background: #7A818B;
+}
+
+@media(max-width:1200px){
+  body{
+    grid-template-columns: 200px 1fr 200px;
+    grid-template-rows: 100px 1fr 1fr 400px;
+  }
+
+  header{
+    grid-column: 2/3;
+  }
+
+  .proveedores{
+    grid-row: 4/5;
+    grid-column: 2/3;
+  }
+
+  .formulario--crear{
+    grid-row: 2/3;
+    grid-column: 2/3;
+  }
+  .formulario--actualizar{
+    grid-row: 3/4;
+    grid-column: 2/3;
+  }
 }
