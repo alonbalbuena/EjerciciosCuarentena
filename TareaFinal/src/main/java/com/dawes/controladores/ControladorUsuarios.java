@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,7 +18,7 @@ import com.dawes.servicios.UsuarioServicio;
 public class ControladorUsuarios {
 
 	@Autowired
-	UsuarioServicio servicio;
+	private UsuarioServicio servicio;
 	
 	@GetMapping("/usuario")
 	public List<GetUsuarioDTO> mostrarUsuarios(){
@@ -30,6 +31,11 @@ public class ControladorUsuarios {
 	
 	@PostMapping("/usuario")
 	public void nuevoUsuario(@RequestBody Usuario nuevoUsuario) {
-		servicio.save(nuevoUsuario);
+		servicio.save(servicio.crearNuevoUsuario(nuevoUsuario));
+	}
+	
+	@GetMapping("/yo")//@Auth... nos devuelve las credenciales del usuario actualmente autenticado
+	public GetUsuarioDTO yo(@AuthenticationPrincipal Usuario usuario) {
+		return new GetUsuarioDTO(usuario);
 	}
 }

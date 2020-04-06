@@ -19,10 +19,10 @@ import com.dawes.seguridad.Rol;
 public class UsuarioServicio implements UserDetailsService{
 
 	@Autowired
-	PasswordEncoder codificador;
+	private PasswordEncoder codificador;
 	
 	@Autowired
-	UsuarioRepositorio repositorio;
+	private UsuarioRepositorio repositorio;
 	
 	//METODO IMPLEMENTADO DE UserDetailsService
 	@Override
