@@ -43,7 +43,7 @@ public class ControladorAdmin {
 	    modelo.addAttribute("nuevoproveedor", new ProveedorBO());// para crear
 	    modelo.addAttribute("proveedoractualizado", new ProveedorBO());// para actualizar
 
-	    return "proveedores";
+	    return "proveedoresAdmin";
 	  }
 	  
 	  @RequestMapping("/eliminarProveedor")

@@ -26,7 +26,7 @@ public class ControladorUsuarios {
 		modelo.addAttribute("proveedores", proveedores);
 		modelo.addAttribute("proveedoractualizado", new ProveedorBO());// para actualizar
 
-		return "proveedores";
+		return "proveedoresUsuario";
 	}
 
 	@RequestMapping(value = "/actualizarProveedor")
@@ -36,6 +36,6 @@ public class ControladorUsuarios {
 		parametros.put("id", proveedor.getIdproveedor());
 		plantillaPeticiones.put("http://localhost:8080/proveedor/{id}", proveedor, parametros);
 		inicio(modelo);
-		return "proveedoresAdmin";
+		return "proveedoresUsuario";
 	}
 }

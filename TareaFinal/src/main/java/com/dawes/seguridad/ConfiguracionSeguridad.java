@@ -42,10 +42,10 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
 	//correctamente autenticado pero no tenemos el ROL suficiente)
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-		.antMatchers(HttpMethod.DELETE, "/proveedor/**").hasRole("ADMIN")
-		.antMatchers(HttpMethod.GET, "/admin/**","/admin/").hasRole("ADMIN")
-		.antMatchers(HttpMethod.POST, "/proveedor").hasRole("ADMIN")
-		.antMatchers(HttpMethod.GET,"user/**","user/").hasAnyRole("USUARIO", "ADMIN")
+		.antMatchers(HttpMethod.DELETE,"/proveedor/**").hasRole("ADMIN")
+		.antMatchers(HttpMethod.GET,"/admin/**","/admin/").hasRole("ADMIN")
+		.antMatchers(HttpMethod.POST,"/proveedor").hasRole("ADMIN")
+		.antMatchers(HttpMethod.GET,"user/**","user/").hasAnyRole("USUARIO")
 		.antMatchers(HttpMethod.GET, "/proveedores", "/proveedor/**").hasAnyRole("USUARIO", "ADMIN")
 		.antMatchers(HttpMethod.PUT, "/proveedor/**").hasAnyRole("USUARIO", "ADMIN")
 		.antMatchers(HttpMethod.POST, "/usuario").permitAll()
@@ -54,8 +54,7 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
 		.and()
 		.formLogin()
 		.and()
-		.csrf().disable()
-			;
+		.csrf().disable();
 	}
 
 }
