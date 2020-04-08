@@ -4,10 +4,12 @@ import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,20 +30,42 @@ public class Usuario implements UserDetails{
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+	@Column(unique = true)
 	private String usuario;
 	private String contraseña;
 	//usaremos una enumeracion en vez de una tabla
-	@ElementCollection//igual que si usasemos manyToOne
+	@ElementCollection(fetch = FetchType.EAGER)//igual que si usasemos manyToOne
 	@Enumerated(EnumType.STRING)//considera los objetos dentro del enum Strings
 	private Set<Rol> roles;
 	
-	@Override
+	
+	
+	public Usuario() {
+		super();
+	}
+
+	public Usuario(String usuario, String contraseña, Set<Rol> roles) {
+		super();
+		this.usuario = usuario;
+		this.contraseña = contraseña;
+		this.roles = roles;
+	}
+
+	public Usuario(Integer id, String usuario, String contraseña, Set<Rol> roles) {
+		this.id = id;
+		this.usuario = usuario;
+		this.contraseña = contraseña;
+		this.roles = roles;
+	}
+
+	@Override//devuelve todas las autorizaciones que tiene el usuario en este caso son Simples
+	//por lo tanto recorre todos los roles de la BBDD que tiene y los convierte a autorizacionesimples
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		//// @formatter:off
 		//devolvemos los permisos que tiene el usuario en este caso los roles
 		return roles
 				.stream()
-				.map(rol -> new SimpleGrantedAuthority("ROL_"+ rol.name()))//le damos autoridad a todos rol
+				.map(rol -> new SimpleGrantedAuthority("ROLE_" + rol.name()))//le damos autoridad a todos rol
 				//Simplegrantedauthority guarda una representacion de la autenticacion
 				//(UsernamePasswordAutheticationtoken)  dada a este objeto
 				.collect(Collectors.toList());//el metodo devuelve un conjunto de autorizaciones
@@ -61,20 +85,8 @@ public class Usuario implements UserDetails{
 		this.id = id;
 	}
 
-	public String getUsuario() {
-		return usuario;
-	}
-
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
-	}
-
-	public String getContraseña() {
-		return contraseña;
-	}
-
-	public Set<Rol> getRoles() {
-		return roles;
 	}
 
 	public void setRoles(Set<Rol> roles) {
@@ -104,5 +116,9 @@ public class Usuario implements UserDetails{
 	@Override
 	public boolean isEnabled() {
 		return true;
+	}
+
+	public Set<Rol> getRoles() {
+		return roles;
 	}
 }

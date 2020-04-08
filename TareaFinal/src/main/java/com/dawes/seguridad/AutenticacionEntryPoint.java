@@ -29,13 +29,12 @@ public class AutenticacionEntryPoint extends BasicAuthenticationEntryPoint {
 		response.setStatus(HttpStatus.UNAUTHORIZED.value());
 		
 		//mensaje de error
-		String strApiError = mapeadorJson.writeValueAsString(authException.getMessage());
 		PrintWriter writer = response.getWriter();
-		writer.println(strApiError);
+		writer.println("ERROR AUTENTICATION ENTRY POINT");
 	}
 	
 	@PostConstruct//asignamos el nombre del reino
 	public void initRealname() {
-		setRealmName("172.0.0.1");
+		setRealmName("serverAlon");
 	}
 }
