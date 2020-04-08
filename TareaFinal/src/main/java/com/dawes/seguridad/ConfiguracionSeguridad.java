@@ -16,9 +16,6 @@ import com.dawes.servicios.UsuarioServicio;
 public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	private AutenticacionEntryPoint autenticacionEntryPoint;
-
-	@Autowired
 	private UsuarioServicio servicioUsuario;
 
 	@Autowired
@@ -46,12 +43,14 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 		.antMatchers(HttpMethod.DELETE, "/proveedor/**").hasRole("ADMIN")
+		.antMatchers(HttpMethod.GET, "/admin/**","/admin/").hasRole("ADMIN")
 		.antMatchers(HttpMethod.POST, "/proveedor").hasRole("ADMIN")
-		.antMatchers(HttpMethod.GET,"/","/inicio").hasAnyRole("USUARIO", "ADMIN")
+		.antMatchers(HttpMethod.GET,"user/**","user/").hasAnyRole("USUARIO", "ADMIN")
 		.antMatchers(HttpMethod.GET, "/proveedores", "/proveedor/**").hasAnyRole("USUARIO", "ADMIN")
 		.antMatchers(HttpMethod.PUT, "/proveedor/**").hasAnyRole("USUARIO", "ADMIN")
 		.antMatchers(HttpMethod.POST, "/usuario").permitAll()
 		.antMatchers(HttpMethod.GET, "/").permitAll()
+		.antMatchers(HttpMethod.GET, "/yo").permitAll()
 		.and()
 		.formLogin()
 		.and()
