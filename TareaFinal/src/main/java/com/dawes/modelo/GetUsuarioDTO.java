@@ -10,6 +10,9 @@ public class GetUsuarioDTO {
 	private String nombre;
 	private Set<String> roles;
 	
+	public GetUsuarioDTO() {
+	}
+
 	public GetUsuarioDTO(Usuario usuario) {
 		nombre = usuario.getUsername();
 		roles = usuario.getRoles()

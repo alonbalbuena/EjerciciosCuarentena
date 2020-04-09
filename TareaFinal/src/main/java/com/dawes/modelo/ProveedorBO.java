@@ -22,7 +22,6 @@ public class ProveedorBO {
 	@DateTimeFormat(iso = ISO.DATE)//evitamos problemas en formularios al meter fechas
 	private LocalDate fecha;
 	public ProveedorBO(int idproveedor, String nombre, String apellidos, String nif, LocalDate fecha) {
-		super();
 		this.idproveedor = idproveedor;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
@@ -30,16 +29,14 @@ public class ProveedorBO {
 		this.fecha = fecha;
 	}
 	public ProveedorBO(String nombre, String apellidos, String nif, LocalDate fecha) {
-		super();
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.nif = nif;
 		this.fecha = fecha;
 	}
 	public ProveedorBO() {
-		super();
 	}
-	public int getIdproveedor() {
+	public Integer getIdproveedor() {
 		return idproveedor;
 	}
 	public void setIdproveedor(int idproveedor) {

@@ -24,13 +24,12 @@ public class ControladorAdmin {
 
 	  //obejto que nos permite hacer las peticiones a la apiREST
 	  private RestTemplate plantillaPeticiones = new RestTemplate();
-
+	  
 	  // Coje la ruta del inicio tras el login
 	  // pero devuelve otro html
 	  @RequestMapping("/inicio")
 	  public String inicio(Model modelo) {
 	    // generamos una peticion HTTP que nos devuelva los proveedores
-
 	    // 1ª MANERA
 	    // getForObject no permite enviar listas de objetos(podriamos crear un wrapper)
 	    // pero si arrays

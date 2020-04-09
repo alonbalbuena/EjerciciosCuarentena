@@ -4,16 +4,19 @@
     <meta charset="ISO-8859-1" />
     <title>Lista proveedores</title>
     <!-- FUENTES Y ESTILOS -->
-    <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap"
+    type="text/css"
+     rel="stylesheet">
     <link
       href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300&display=swap"
+      type="text/css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" type="text/css" href="css/proveedores.css" />
+    <link rel="stylesheet" type="text/css" href="../css/proveedores.css" />
   </head>
   <body>
     <header>
-      <h1>Proveedores</h1>
+      <h1 th:text="${nombreUsuario}">Proveedores</h1>
     </header>
     <div class="proveedores">
       <table class="proveedores__tabla">
@@ -32,7 +35,7 @@
           <td th:text="${proveedor.nif}"></td>
           <td th:text="${proveedor.fecha}"></td>
           <td>
-            <a th:href="@{/eliminarProveedor(id=${proveedor.idproveedor})}"
+            <a th:href="@{/user/eliminarProveedor(id=${proveedor.idproveedor})}"
               >Eliminar</a
             >
           </td>
@@ -40,18 +43,17 @@
       </table>
     </div>
     <!-- Identificamos el tipo del objeto que saldra de este formulario(el nombre del objeto es 
-		el del metodo del controlador) -->
+		el del metodo del controlador)-->
     <div class="formulario formulario--actualizar">
       <h1 class="formulario__titulo">actualizar</h1>
       <form
         th:object="${proveedoractualizado}"
-        th:action="@{/actualizarProveedor}"
-        method="PUT"
+        th:action="@{/user/actualizarProveedor}"
       >
-        <label for="id">id:</label
-        ><input id="id" type="text" th:field="*{idproveedor}" />
-        <label for="nombre-actualizado">nombre:</label
-        ><input id="nombre-actualizado" type="text" th:field="*{nombre}" />
+        <label for="id">id:</label>
+        <input id="id" type="text" th:field="*{idproveedor}"/>
+        <label for="nombre-actualizado">nombre:</label>
+        <input id="nombre-actualizado" type="text" th:field="*{nombre}"/>
         <label for="apellidos-actualizado">apellidos:</label>
         <input id="apellidos-actualizado" type="text" th:field="*{apellidos}" />
         <input class="formulario__boton" type="submit" value="" />
