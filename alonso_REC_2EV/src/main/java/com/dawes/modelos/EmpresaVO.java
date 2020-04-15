@@ -3,6 +3,7 @@ package com.dawes.modelos;
 import java.util.HashSet;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,7 +18,7 @@ public class EmpresaVO {
 	@Id @GeneratedValue(strategy =GenerationType.IDENTITY)
 	private Integer idempresa;
 	private String denominacion;
-	@OneToMany(mappedBy = "empresa")
+	@OneToMany(mappedBy = "empresa",fetch = FetchType.EAGER)
 	private HashSet<ImpuestosVO> declariaciones;
 	
 	public EmpresaVO() {
