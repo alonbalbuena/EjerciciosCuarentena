@@ -20,6 +20,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.dawes.seguridad.Rol;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
 @Table(name="usuarios")
@@ -40,6 +42,12 @@ public class Usuario implements UserDetails{
 	
 	
 	
+	public Usuario(String usuario, String contraseña) {
+		super();
+		this.usuario = usuario;
+		this.contraseña = contraseña;
+	}
+
 	public Usuario() {
 		super();
 	}
@@ -93,6 +101,14 @@ public class Usuario implements UserDetails{
 		this.roles = roles;
 	}
 
+	public String getUsuario() {
+		return getUsername();
+	}
+
+	public String getContraseña() {
+		return getPassword();
+	}
+
 	@Override
 	public String getPassword() {
 		return contraseña;
@@ -121,4 +137,11 @@ public class Usuario implements UserDetails{
 	public Set<Rol> getRoles() {
 		return roles;
 	}
+
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", usuario=" + usuario + ", contraseña=" + contraseña + ", roles=" + roles + "]";
+	}
+	
+	
 }

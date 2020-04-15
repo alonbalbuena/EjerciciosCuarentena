@@ -60,6 +60,8 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
 		.antMatchers(HttpMethod.GET, "/proveedores", "/proveedor/**").permitAll()
 		.antMatchers(HttpMethod.PUT, "/proveedor/**").permitAll()
 		.antMatchers(HttpMethod.POST, "/usuario").permitAll()
+		.antMatchers(HttpMethod.GET, "/registro").permitAll()
+		.antMatchers(HttpMethod.POST, "/crearUsuario").permitAll()
 		.antMatchers(HttpMethod.GET, "/yo").permitAll()
 		.and()
 		.formLogin()
@@ -71,7 +73,8 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
 		 * Ej: 
 		 * (importante tambien que el metodo sea POST y que action sea la de "loginProcessingUrl"
 		 * <input type="text" name="username" id="usuario" />
-		 * <input type="text" name="password" id="contraseña" />*/
+		 * <input type="text" name="password" id="contraseña" />
+		 * Spring guarda esta informacion en una cookie "JSESSIONID" durante toda la navegacion */
 		.defaultSuccessUrl("/user/inicio")//a que pagina redirige
 		.failureUrl("/logeo")//a que pagina redirige si hay fallo
 		.permitAll()
@@ -81,15 +84,16 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
 	
 	@Bean
 	public RestTemplate getRestTemplate(RestTemplateBuilder restTemplateBuilder) {
-		RestTemplate plantilla = restTemplateBuilder.basicAuthentication("admin", "admin").build();
-		
+		RestTemplate plantilla = restTemplateBuilder.build();
+		//RestTemplate plantilla = restTemplateBuilder.basicAuthentication("admin", "admin").build();
+
 		//indico que tipos de contenido son permitidos como respuesta a las peticiones RESTTEMPLATE
 		//(en este caso permito todos)
-		List<HttpMessageConverter<?>> messageConverters = new ArrayList<>();
-		   MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-		   converter.setSupportedMediaTypes(Collections.singletonList(MediaType.ALL));
-		   messageConverters.add(converter);
-		   plantilla.setMessageConverters(messageConverters);
+		//List<HttpMessageConverter<?>> messageConverters = new ArrayList<>();
+		//MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
+		//converter.setSupportedMediaTypes(Collections.singletonList(MediaType.ALL));
+		// messageConverters.add(converter);
+		//plantilla.setMessageConverters(messageConverters);
 		return plantilla;
 	}
 
