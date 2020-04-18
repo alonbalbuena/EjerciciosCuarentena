@@ -1,0 +1,100 @@
+body{
+  margin:0;
+  position: relative;
+
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+
+  background-color: #ECF0F1;
+}
+
+.lista{
+  list-style: none;
+  counter-reset: contador-impuestos;
+  background-color: #E74C3C;
+  min-width:259.25px;
+}
+
+.lista > li{
+  counter-increment: contador-impuestos;
+  list-style-type: none;
+  font-family: 'Roboto Mono', serif;
+}
+
+.lista > li::before{
+  content:  counter(contador-impuestos);
+  position: absolute;
+  font-weight: bold;
+  font-size: 3rem;
+  margin-right: 0.5rem;
+  margin-top:0.5rem;
+  margin-bottom: 0.5rem;
+  font-family: 'Abril Fatface', serif;
+  line-height: 1;
+  color:#ECF0F1;
+}
+
+.impuesto{
+  list-style-type: none;
+  border-bottom:2px solid #2C3E50;
+}
+
+.volver{
+  font-family: 'Abril Fatface', cursive;
+
+  color:#ECF0F1;
+  position: absolute;
+  bottom: 100px;
+
+  text-align: center;
+  text-decoration: none;
+  
+}
+.volver:hover{
+  transform: translateX(-15px);
+  transition:.5s transform;
+}
+
+.volver:hover::before{
+  left:-15px;
+}
+.volver:hover::after{
+  left:-40px;
+}
+
+.volver::before{
+  content: "Volver";
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 0;
+  
+  position: absolute;
+  left:0px;
+  bottom: -15px;
+  
+  width: 170px;
+  height: 50px;
+  
+  background-color: #2C3E50;
+  border:2px solid #2C3E50;
+  box-sizing: border-box;
+
+  transition:.5s left;
+}
+.volver::after{
+  content: "";
+
+  position: absolute;
+  bottom: -15px;
+  left: -25px;
+  
+  background-color: transparent;
+  border-right: 25px solid #2C3E50;
+  border-top: 25px solid transparent;
+  border-bottom:25px solid transparent;
+
+  transition:.5s left;
+}

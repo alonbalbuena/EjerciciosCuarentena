@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="ISO-8859-1">
+<title>Formulario</title>
+<link rel="stylesheet" href="css/formFechas.css">
+<link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap"
+      rel="stylesheet"
+    />
+</head>
+<body>
+	<div class="zona-interior">
+		<form th:action="@{/procesarFechas}">
+			de:<input type="date" value="2020-01-01" name="fechaInicial">
+			a:<input type="date" value="2020-01-01" name="fechaFinal">
+			<input class="boton" type="submit" value="enviar">
+		</form>
+	</div>
+</body>
+</html>

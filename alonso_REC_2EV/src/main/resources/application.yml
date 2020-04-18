@@ -1,0 +1,14 @@
+spring:
+  batch:
+    job:
+      enabled: false
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: temporal
+    url: jdbc:mysql://localhost/rec_2ev?serverTimezone=UTC
+    username: root
+    initialization-mode: always
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true

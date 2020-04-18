@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Listado</title>
+    <link rel="stylesheet" href="/css/desplegable.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="columna-izquierda">
+      <form th:action="@{/impuestosEmpresa}">
+        <select name="idempresa">
+          <th:block th:each="empresa : ${empresas}">
+            <option
+              th:value="${empresa.idempresa}"
+              th:text="${empresa.denominacion}"
+            ></option>
+          </th:block>
+        </select>
+        <input class="mostrar" type="submit" value="mostrar" />
+      </form>
+    </div>
+    <div class="columna-derecha">
+      <ol class="columna-derecha__lista">
+        <li th:each="impuesto : ${impuestos}">
+          <ul class="impuesto">
+            <li>
+              Base Imponible : <span th:text="${impuesto.baseimponible}"></span>
+            </li>
+            <li>Fecha: <span th:text="${impuesto.fecha}"></span></li>
+            <li>
+              <a
+                th:href="@{/informacionImpuesto(idimpuesto=${impuesto.idimpuesto})}"
+                >Modificar</a
+              >
+            </li>
+          </ul>
+        </li>
+      </ol>
+      <a class="volver" th:href="@{/}">Volver</a>
+    </div>
+  </body>
+</html>

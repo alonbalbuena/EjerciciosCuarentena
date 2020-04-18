@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="ISO-8859-1">
+<title>Inicio</title>
+<link rel="stylesheet" type="text/css" href="css/indice.css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+	<a th:href="@{/formularioFechas}">Impuestos por Fecha</a>
+	<!-- al redireccionar le pasamos id 1 por defecto, para evitar mas rutas -->
+	<a th:href="@{/impuestosEmpresa(idempresa=1)}">Listado de Empresas</a>
+</body>
+</html>

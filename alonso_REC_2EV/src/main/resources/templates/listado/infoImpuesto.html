@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+  <head>
+    <meta charset="ISO-8859-1" />
+    <title>InfoImpuesto</title>
+    <link rel="stylesheet" href="/css/infoImpuesto.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="superior">
+      <table>
+        <tr>
+          <td>Base Imponible</td>
+          <td>Fecha</td>
+        </tr>
+        <tr>
+          <!-- necesario acceder al objeto dentro de Optional por eso el get() -->
+          <td th:text="${impuestoParaModificar.get().baseimponible}"></td>
+          <td th:text="${impuestoParaModificar.get().fecha}"></td>
+        </tr>
+      </table>
+    </div>
+    <div class="inferior">
+      <form th:action="@{/modificarImpuesto}">
+        <input
+          id="id"
+          type="hidden"
+          step="1"
+          name="id"
+          th:value="${impuestoParaModificar.get().idimpuesto}"
+        />
+
+        <label for="base">Base <br> Imponible</label>
+        <input id="base" type="number" step="1" name="nuevaBase" />
+
+        <label for="fecha">Fecha</label>
+        <input id="fecha" type="date" name="nuevaFecha" />
+
+        <input class="actualizar" type="submit" value="actualizar" />
+      </form>
+      <a class="volver" th:href="@{/impuestosEmpresa(idempresa=1)}">Volver</a>
+    </div>
+  </body>
+</html>

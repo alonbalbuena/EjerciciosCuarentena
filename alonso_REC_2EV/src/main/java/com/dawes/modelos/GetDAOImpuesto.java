@@ -1,10 +1,7 @@
-package com.dawes.ws;
+package com.dawes.modelos;
 
 import java.time.LocalDate;
 import java.util.Optional;
-
-import com.dawes.modelos.EmpresaVO;
-import com.dawes.modelos.ImpuestosVO;
 
 public class GetDAOImpuesto {
 
@@ -12,8 +9,11 @@ public class GetDAOImpuesto {
 	private Integer baseImponible;
 	private String denominacion;
 	
+	public GetDAOImpuesto() {
+		
+	}
+	
 	public GetDAOImpuesto(ImpuestosVO impuesto, Optional<EmpresaVO> empresa) {
-		super();
 		this.fechaImpuesto = impuesto.getFecha();
 		this.baseImponible = impuesto.getBaseimponible();
 		this.denominacion = empresa.get().getDenominacion();
@@ -35,6 +35,11 @@ public class GetDAOImpuesto {
 	}
 	public void setDenominacion(String denominacion) {
 		this.denominacion = denominacion;
+	}
+	@Override
+	public String toString() {
+		return "GetDAOImpuesto [fechaImpuesto=" + fechaImpuesto + ", baseImponible=" + baseImponible + ", denominacion="
+				+ denominacion + "]";
 	}
 	
 	

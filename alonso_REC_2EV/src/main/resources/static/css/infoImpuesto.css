@@ -1,0 +1,185 @@
+body {
+  margin: 0;
+
+  height: 100vh;
+
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr;
+}
+
+.superior {
+  grid-row: 1/2;
+  grid-column: 1/2;
+  background-color: #2c3e50;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.superior > table {
+  border-collapse: collapse;
+  border-style: hidden;
+  table-layout: fixed;
+
+  text-align: center;
+}
+
+table tr:nth-child(1) {
+  font-family: "Abril Fatface";
+}
+
+table tr:nth-child(2) {
+  font-family: "Roboto Mono";
+}
+
+table td {
+  border: 5px solid #ecf0f1;
+  padding: 50px;
+  width: 50%;
+
+  color: #ecf0f1;
+}
+
+.inferior {
+  grid-row: 2/3;
+  grid-column: 1/2;
+  background-color: #ecf0f1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+form{
+  height: 270px;
+
+  position: relative;
+
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 5px;
+  row-gap: 5px;
+} 
+
+form::before{
+  content: "";
+  position: absolute;
+
+  top:120px;
+  left:-35px;
+
+  width: 416px;
+  height: 5px;
+
+  background-color:#E74C3C ;
+
+}
+
+form::after{
+  content: "";
+  position: absolute;
+
+  top:120px;
+  left:40px;
+
+  width: 270px;
+  height: 5px;
+
+  transform: rotate(90deg);
+
+  background-color:#E74C3C ;
+
+}
+
+label{
+  font-family: "Abril Fatface";
+
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+label:nth-child(1){
+  grid-row: 1/2;
+  grid-column: 2/3;
+}
+
+label:nth-child(2) {
+  grid-row: 1/2;
+  grid-column: 1/2;
+}
+
+input[type="date"]{
+  grid-row: 2/3;
+  grid-column: 2/3;
+  height: 20px;
+}
+
+input[type="number"]{
+  grid-row: 2/3;
+  grid-column: 1/2;
+
+  height: 20px;
+}
+
+
+.actualizar{
+  border:none;
+  background-color: #E74C3C;
+  color:#ECF0F1;
+
+  font-family: "Abril Fatface";
+  font-size: 1.3em;
+
+  height: 60px;
+  width: 130px;
+
+  position: absolute;
+
+  right: -200px;
+  top:90px;
+
+  transition: 1s box-shadow, 1s transform;
+
+  cursor: pointer;
+}
+
+.actualizar:hover {
+  box-shadow: 10px 10px #3498db;
+  transform: translate(-10px, -10px);
+}
+
+.volver{
+  position: relative;
+
+  font-family:"Roboto Mono" ;
+  text-decoration: none;
+}
+
+.volver::before{
+  content:"";
+
+  position: absolute;
+  top:20px;
+
+  width: 50px;
+  height: 50px;
+
+  background-image: url("../img/red-go-back-arrow.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  transition: transform 1s;
+}
+
+.volver:hover::before{
+  transform: rotate(-360deg);
+}

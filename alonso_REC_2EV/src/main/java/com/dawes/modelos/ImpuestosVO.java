@@ -3,6 +3,7 @@ package com.dawes.modelos;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,19 +11,21 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.ManyToAny;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="impuestos")
 public class ImpuestosVO {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idpimpuesto;
+	private Integer idimpuesto;
 	private Integer baseimponible;
+	@DateTimeFormat(iso = ISO.DATE)//necesario especificar para coincidir con DATE de HTML
 	private LocalDate fecha;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idempresa")
 	private EmpresaVO empresa;
 	
@@ -39,18 +42,18 @@ public class ImpuestosVO {
 
 	public ImpuestosVO(Integer idpimpuesto, Integer baseimponible, LocalDate fecha, EmpresaVO empresa) {
 		super();
-		this.idpimpuesto = idpimpuesto;
+		this.idimpuesto = idpimpuesto;
 		this.baseimponible = baseimponible;
 		this.fecha = fecha;
 		this.empresa = empresa;
 	}
 
-	public Integer getIdpimpuesto() {
-		return idpimpuesto;
+	public Integer getIdimpuesto() {
+		return idimpuesto;
 	}
 
-	public void setIdpimpuesto(Integer idpimpuesto) {
-		this.idpimpuesto = idpimpuesto;
+	public void setIdimpuesto(Integer idpimpuesto) {
+		this.idimpuesto = idpimpuesto;
 	}
 
 	public Integer getBaseimponible() {
@@ -69,6 +72,8 @@ public class ImpuestosVO {
 		this.fecha = fecha;
 	}
 
+	//para evitar recursion infinita en el servicio REST
+	@JsonIgnore
 	public EmpresaVO getEmpresa() {
 		return empresa;
 	}
@@ -79,7 +84,7 @@ public class ImpuestosVO {
 
 	@Override
 	public String toString() {
-		return "ImpuestosVO [idpimpuesto=" + idpimpuesto + ", baseimponible=" + baseimponible + ", fecha=" + fecha
+		return "ImpuestosVO [idimpuesto=" + idimpuesto + ", baseimponible=" + baseimponible + ", fecha=" + fecha
 				+ ", empresa=" + empresa + "]";
 	}
 }

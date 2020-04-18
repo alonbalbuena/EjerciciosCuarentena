@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="/css/listaImpuestos.css">
+		<link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap"
+      rel="stylesheet"
+    />
+    <title>Impuestos Fechas</title>
+  </head>
+  <body>
+    <ol class="lista">
+      <li th:each="impuesto : ${impuestos}">
+        <ul class="impuesto">
+          <li>Base Imponible : <span th:text="${impuesto.baseImponible}"></span>
+          </li>
+          <li>Fecha: <span th:text="${impuesto.fechaImpuesto}"></span></li>
+          <li>Denominacion: <span th:text="${impuesto.denominacion}"></span></li>
+        </ul>
+      </li>
+		</ol>
+		<a class="volver" th:href="@{/}">Volver</a>
+  </body>
+</html>

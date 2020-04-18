@@ -1,0 +1,62 @@
+body{
+  margin:0;
+  height: 100vh;
+
+  background-color: #ECF0F1;
+
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
+}
+
+.zona-interior{
+  grid-row: 2/3;
+  
+
+  background-color: #E74C3C;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-top: 5px solid #2C3E50;
+  border-bottom: 5px solid #2C3E50;
+}
+
+form{
+font-family: "Roboto Mono";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input{
+  margin: 15px;
+  border: none;
+  height: 50px;
+  width: 130px; 
+  
+}
+
+input[type="date"]{
+  padding-inline-start: 0;
+}
+
+input[type="submit"]{
+  padding: 0;
+}
+
+.boton{
+  border:none;
+
+  background-color: #ECF0F1;
+  font-size: 1.2em;
+  font-family: 'Abril Fatface';
+  text-transform: uppercase;
+
+  transition: 1s box-shadow, 1s transform;
+}
+.boton:hover {
+  box-shadow: 5px 5px #3498db;
+  transform: translate(-5px, -5px);
+}
